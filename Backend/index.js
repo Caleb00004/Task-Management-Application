@@ -1,9 +1,12 @@
+const connectDB = require("./config/db")
 const TaskRoutes = require("./routes/taskRoutes")
 const {errorHandler} = require("./middlewares/errorMiddleware")
 const express = require('express')
 const cors = require('cors')
 
 const app = express()
+
+connectDB()
 
 app.use(express.json())
 
