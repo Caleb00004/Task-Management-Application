@@ -1,0 +1,66 @@
+To Run this server Locally use - node index.js
+
+note: url prefixing each endpoint is 'http://localhost:5000'
+
+TASK (/api/task)
+--> GET, '/' : This is used to get all task data
+res: [
+{
+"_id": "66abb3091586a5768834484e",
+"title": "tekko tle",
+"completed": true,
+"createdAt": "2024-08-01T16:08:41.032Z",
+"updatedAt": "2024-08-01T16:44:35.692Z",
+"__v": 0
+},
+....
+]
+
+    --> POST, '/' : This is used to create a task
+        req: {
+            "title": "second task",
+            "completed": true
+        }
+
+        res: same as `/ GET`
+
+    --> GET, '/filter-task/:status' : This is used to filter out task based on completion status ["status" can either be `completed` | `notcompleted`]
+        res: [
+            {
+                "_id": "66abb3091586a5768834484e",
+                "title": "tekko tle",
+                "completed": true,
+                "createdAt": "2024-08-01T16:08:41.032Z",
+                "updatedAt": "2024-08-01T16:44:35.692Z",
+                "__v": 0
+            },
+            {
+                "_id": "66abb302186a5768834484e",
+                "title": "dekggto twe",
+                "completed": true,
+                "createdAt": "2024-08-01T16:08:41.032Z",
+                "updatedAt": "2024-08-01T16:44:35.692Z",
+                "__v": 0
+            },
+
+            ....
+        ]
+
+    --> PATCH, '/complete' : This is used to update task completion status [it flips the value from true to false and vice versa]
+        req: {
+            taskId: "66abb3091586a5768834484e"
+        }
+
+        res: {
+            message: 'Task completion status successfully updated',
+            completion: true
+        }
+
+    --> DELETE, '/delete' : This is used to delete a task
+         req: {
+            taskId: "66abb3091586a5768834484e"
+        }
+
+        res: {
+            message: 'Task successfully deleted'
+        }
