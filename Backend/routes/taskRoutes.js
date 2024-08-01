@@ -1,10 +1,10 @@
 const express = require('express')
-const {createTask, getTasks, updateTaskCompletion, deleteTask} = require('../controllers/taskController')
+const {createTask, getTask, updateTaskCompletion, deleteTask} = require('../controllers/taskController')
 
 const router = express.Router()
 
 // To get a Task
-router.route('/').get(getTasks)
+router.route('/').get(getTask)
 
 // To Create a Task
 router.route('/').post(createTask)
