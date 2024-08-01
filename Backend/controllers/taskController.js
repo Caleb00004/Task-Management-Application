@@ -36,6 +36,22 @@ const getTask = AsyncHandler(async (req, res, next) => {
     }
 })
 
+// To get filtered Tasks
+const getFilteredTasks = AsyncHandler(async (req, res, next) => {
+    const { status } = req.params;
+
+    // Convert the completion query parameter to a boolean
+    const completionStatus = status === "completed" ? true : false;
+
+    try {
+        // Fetch tasks based on the completion status
+        const tasks = await Task.find({ completed: completionStatus });
+        res.status(200).json(tasks);
+    } catch (err) {
+        throw new Error(err.message)
+    }
+});
+
 // To update Task Completion
 const updateTaskCompletion = AsyncHandler (async (req, res, next) => {
     if(!req.body.taskId) {
@@ -114,4 +130,4 @@ const deleteTask = AsyncHandler (async (req, res, next) => {
 })
 
 
-module.exports = {createTask, getTask, updateTaskCompletion, deleteTask}
+module.exports = {createTask, getTask, updateTaskCompletion, deleteTask, getFilteredTasks}
