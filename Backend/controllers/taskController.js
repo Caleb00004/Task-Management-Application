@@ -3,24 +3,21 @@ const Task = require("../schemas/taskSchema")
 
 // Create Task
 const createTask = AsyncHandler(async (req, res, next) => {
-    const {title, completion} = req.body
+    const {title, completed} = req.body
 
-    if (!title || !completion ) {
+    if (!title || completed === undefined ) {
         res.status(401).json({
-            message: "Please provide all Fields (title and completion)"
+            message: "Please provide all Fields (title and completed)"
         })
     }
 
     try {
         const newTask = await Task.create({
             title,
-            completion
+            completed
         })
 
-        console.log(newTask)
-        const fullTask = await Task.findOne({_id: newTask._id})
-
-        res.status(201).json(fullTask)
+        res.status(201).json(newTask)
     } catch (error) {
         res.status(401)
         throw new Error(error.message)
