@@ -15,26 +15,32 @@ First, clone the repository to your local machine:
 ```sh
 git clone https://github.com/Caleb00004/Task-Management-Application.git
 cd Task-Management-Application
+```
 
 ## Frontend Setup
 Navigate to the frontend directory and install the dependencies:
 
+```
 > cd frontend
 > npm install
+```
 
 Start the development server:
-
+```
 > npm run dev
+```
 
 ## Backend Setup (Node.js, Express, MongoDB)
 Navigate to the backend directory and install the dependencies:
-
+```
 > cd backend
 > npm install
+```
 
 Ensure MongoDB is running on your system. You can start the backend server with:
+```
 > node index.js
-
+```
 This will start the backend server on http://localhost:5000.
 
 ### Usage Instructions
