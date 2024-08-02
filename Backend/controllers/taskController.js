@@ -69,7 +69,7 @@ const updateTaskCompletion = AsyncHandler (async (req, res, next) => {
         }
 
         // Flip the completion field
-        const newCompletionValue = !task.completion;
+        const newCompletionValue = !task.completed;
 
         // Update the task with the new value
         await Task.updateOne({ _id: taskId }, { $set: { completed: newCompletionValue } });

@@ -11,6 +11,11 @@ const app = express()
 connectDB()
 
 app.use(express.json())
+app.use(cors({
+    origin: 'http://localhost:3000',
+    credentials: true
+    // origin: '*',
+}))
 
 // middleware to log out each request details
 app.use(morgan('combined'))
