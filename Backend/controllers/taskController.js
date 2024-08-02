@@ -72,11 +72,11 @@ const updateTaskCompletion = AsyncHandler (async (req, res, next) => {
         const newCompletionValue = !task.completion;
 
         // Update the task with the new value
-        await Task.updateOne({ _id: taskId }, { $set: { completion: newCompletionValue } });
+        await Task.updateOne({ _id: taskId }, { $set: { completed: newCompletionValue } });
 
         res.status(201).json({
             message: 'Task completion status successfully updated',
-            completion: newCompletionValue
+            completed: newCompletionValue
         });
     } catch (err) {
         res.status(401)
